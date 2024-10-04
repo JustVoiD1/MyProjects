@@ -1,0 +1,5 @@
+when width < 1000px make the volume  bar center and flex wrapped
+
+make the songbuttons to center
+
+all changes have been done in css2 and html2
