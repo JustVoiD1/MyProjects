@@ -19,7 +19,7 @@ body {
 .logo {
 
     img {
-        width: 70px;
+        width: 45px;
     }
 }
 
@@ -72,10 +72,10 @@ body {
     }
 }
 
+
 .logo>img{
     width: 70px;
 }
-
 
 .footer {
     display: flex;
