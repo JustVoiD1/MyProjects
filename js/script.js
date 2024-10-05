@@ -28,7 +28,8 @@ let currentSong = new Audio();
 
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`./${folder}`);
+    let a = await fetch(`./songs/${folder}/`);
+    console.log(folder)
     let response = await a.text();
     // console.log(response);
     let div = document.createElement("div")
@@ -39,7 +40,7 @@ async function getSongs(folder) {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith("mp3")) {
-            songs.push(element.href.split(`/${folder}/`)[1]);
+            songs.push(element.href.split(`${folder}/`)[1]);
         }
 
     }
@@ -104,9 +105,9 @@ async function getSongs(folder) {
 //Playing songs
 const playMusic = (track) => {
     // let audio = new Audio("/songs/"+track);
-    currentSong.src = `/${currFolder}/` + track
+    currentSong.src = `./songs/${currFolder}/` + track
     currentSong.play();
-    player.src = "pause.svg";
+    player.src = "./pause.svg";
 
     document.querySelector(".playbar").style.display = "flex"; // Show the playbar
 
@@ -125,6 +126,7 @@ async function displayAlbums() {
 
 
     let a = await fetch(`./songs/`);
+    // console.log("fetched")
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -144,7 +146,8 @@ async function displayAlbums() {
             console.log(folder)
 
 
-            let b = await fetch(`./${folder[0]}/${folder[1]}/info.json`);
+            // let b = await fetch(`./${folder[0]}/${folder[1]}/info.json`);
+            let b = await fetch(`./songs/${folder[1]}/info.json`);
             let response = await b.json();
             console.log('response is ');
             let cardcontainer = document.querySelector(".cardcontainer")
@@ -167,9 +170,9 @@ async function displayAlbums() {
             e.addEventListener("click", async item => {
                 console.log(item, item.currentTarget, item.currentTarget.dataset)
                 console.log(`fetching songs`)
-                songs = await getSongs(`songs/${item.currentTarget.dataset.folder}`)
-                console.log(songs)
-                playMusic(songs[0])
+                songs = await getSongs(`${item.currentTarget.dataset.folder}`)
+                console.log(songs);
+                playMusic(songs[0]);
 
             })
         })
