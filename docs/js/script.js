@@ -125,12 +125,12 @@ async function displayAlbums() {
     console.log('displaying albums');
 
 
-    let a = await fetch(`./songs/`);
+    let a = await fetch(`./songs`);
     // console.log("fetched")
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
-    console.log(response)
+    // console.log(response)
     console.log(div)
     let anchors = div.getElementsByTagName("a")
 
@@ -201,7 +201,7 @@ async function main() {
     hidePlaybar();
     //Get the list of songs
     let currentSong = new Audio();
-    await getSongs(`/brooks`);
+    await getSongs(`brooks`);
     // console.log(songs);
 
     //Display all the albums on the page
