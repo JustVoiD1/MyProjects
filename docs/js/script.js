@@ -130,6 +130,7 @@ async function displayAlbums() {
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
+    console.log(response)
     console.log(div)
     let anchors = div.getElementsByTagName("a")
 
@@ -147,9 +148,10 @@ async function displayAlbums() {
 
 
             // let b = await fetch(`./${folder[0]}/${folder[1]}/info.json`);
-            let b = await fetch(`./songs/${folder[1]}/info.json`);
+            let b = await fetch(`./${folder[0]}/${folder[1]}/info.json`);
             let response = await b.json();
             console.log('response is ');
+            console.log(response)
             let cardcontainer = document.querySelector(".cardcontainer")
             console.log(response)
             cardcontainer.innerHTML = cardcontainer.innerHTML + `<div data-folder="${folder[1]}" class="card rounded">
@@ -158,7 +160,7 @@ async function displayAlbums() {
                              <img src="./img/play2.svg" alt="" srcset="">
  
                          </div>
-                         <img src="./songs/${folder[1]}/cover.jpg" alt="">
+                         <img src="./${folder[0]}/${folder[1]}/cover.jpg" alt="">
  
                          <h2>${response.title}</h2>
                          <p>${response.Description}</p>
@@ -199,7 +201,7 @@ async function main() {
     hidePlaybar();
     //Get the list of songs
     let currentSong = new Audio();
-    await getSongs(`./songs/brooks`);
+    await getSongs(`/brooks`);
     // console.log(songs);
 
     //Display all the albums on the page
