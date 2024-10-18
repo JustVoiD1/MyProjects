@@ -28,12 +28,8 @@ let currentSong = new Audio();
 
 async function getSongs(folder) {
     currFolder = folder;
-<<<<<<< HEAD
-    let a = await fetch(`./songs/${folder}`);
+    let a = await fetch(`./songs/${folder}/`);
     console.log(folder)
-=======
-    let a = await fetch(`./${folder}`);
->>>>>>> 9cd1dd21fee8d6092fcad3ca67575a73a9d0ead8
     let response = await a.text();
     // console.log(response);
     let div = document.createElement("div")
@@ -109,11 +105,7 @@ async function getSongs(folder) {
 //Playing songs
 const playMusic = (track) => {
     // let audio = new Audio("/songs/"+track);
-<<<<<<< HEAD
     currentSong.src = `./songs/${currFolder}/` + track
-=======
-    currentSong.src = `./${currFolder}/` + track
->>>>>>> 9cd1dd21fee8d6092fcad3ca67575a73a9d0ead8
     currentSong.play();
     player.src = "./pause.svg";
 
@@ -134,10 +126,7 @@ async function displayAlbums() {
 
 
     let a = await fetch(`./songs/`);
-<<<<<<< HEAD
     // console.log("fetched")
-=======
->>>>>>> 9cd1dd21fee8d6092fcad3ca67575a73a9d0ead8
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -157,12 +146,8 @@ async function displayAlbums() {
             console.log(folder)
 
 
-<<<<<<< HEAD
             // let b = await fetch(`./${folder[0]}/${folder[1]}/info.json`);
             let b = await fetch(`./songs/${folder[1]}/info.json`);
-=======
-            let b = await fetch(`./${folder[0]}/${folder[1]}/info.json`);
->>>>>>> 9cd1dd21fee8d6092fcad3ca67575a73a9d0ead8
             let response = await b.json();
             console.log('response is ');
             let cardcontainer = document.querySelector(".cardcontainer")
@@ -185,15 +170,9 @@ async function displayAlbums() {
             e.addEventListener("click", async item => {
                 console.log(item, item.currentTarget, item.currentTarget.dataset)
                 console.log(`fetching songs`)
-<<<<<<< HEAD
                 songs = await getSongs(`${item.currentTarget.dataset.folder}`)
                 console.log(songs);
                 playMusic(songs[0]);
-=======
-                songs = await getSongs(`./songs/${item.currentTarget.dataset.folder}`)
-                console.log(songs)
-                playMusic(songs[0])
->>>>>>> 9cd1dd21fee8d6092fcad3ca67575a73a9d0ead8
 
             })
         })
@@ -319,4 +298,5 @@ document.querySelector(".volume>img").addEventListener("click", (e) => {
 
 
 main();
+
 
