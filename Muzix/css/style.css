@@ -73,7 +73,9 @@ body {
 }
 
 
-
+.logo>img{
+    width: 70px;
+}
 
 .footer {
     display: flex;
